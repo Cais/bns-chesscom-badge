@@ -3,35 +3,49 @@
 Plugin Name: BNS Chess.com Badge
 Plugin URI: http://buynowshop.com/plugins/bns-chesscom-badge
 Description: Chess.com widget that dynamically displays the user's current rating with direct links to Chess.com
-Version: 0.3
+Version: 0.4
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
-License: GPL2
+License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
-/* Last Updated: June 3, 2011 v0.3 */
-
-/*  Copyright 2010-2011  Edward Caissie  (email : edward.caissie@gmail.com)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License version 2,
-    as published by the Free Software Foundation.
-
-    You may NOT assume that you can use any other version of the GPL.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-    The license for this software can also likely be found here:
-    http://www.gnu.org/licenses/gpl-2.0.html
-*/
+/**
+ * BNS Chess.com Badge
+ *
+ * Chess.com widget that dynamically displays the user's current rating with
+ * direct links to Chess.com
+ *
+ * @package     BNS_Chesscom_Badge
+ * @link        http://buynowshop.com/plugins/bns-chesscom-badge/
+ * @link        https://github.com/Cais/bns-chesscom-badge/
+ * @link        http://wordpress.org/extend/plugins/bns-chesscom-badge/
+ * @version     0.4
+ * @author      Edward Caissie <edward.caissie@gmail.com>
+ * @copyright   Copyright (c) 2010-2011, Edward Caissie
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License version 2, as published by the
+ * Free Software Foundation.
+ *
+ * You may NOT assume that you can use any other version of the GPL.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to:
+ *
+ *      Free Software Foundation, Inc.
+ *      51 Franklin St, Fifth Floor
+ *      Boston, MA  02110-1301  USA
+ *
+ * The license for this software can also likely be found here:
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Last revised November 16, 2011
+ */
 
 global $wp_version;
 $exit_message = 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
