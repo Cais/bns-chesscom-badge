@@ -82,7 +82,7 @@ load_plugin_textdomain( 'bns-cb' );
  *
  * Adds plugin stylesheet and allows for custom stylesheet to be added by end-user.
  *
- * @package BNS_Add_Widget
+ * @package BNS_Chesscom_Badge
  * @since   0.3
  * @version 0.4
  *
@@ -107,11 +107,11 @@ add_action( 'widgets_init', 'load_bnscb_widget' );
 
 class BNS_Chesscom_Badge_Widget extends WP_Widget {
         function BNS_Chesscom_Badge_Widget() {
-                /* Widget settings. */
+                /** Widget settings */
                 $widget_ops = array('classname' => 'bns-chesscom-badge', 'description' => __( 'Displays a Chess.com member badge in a widget area; or, with a shortcode.', 'bns-cb' ) );
-                /* Widget control settings. */
+                /** Widget control settings */
                 $control_ops = array('width' => 200, 'id_base' => 'bns-chesscom-badge');
-                /* Create the widget. */
+                /** Create the widget */
                 $this->WP_Widget('bns-chesscom-badge', 'BNS Chess.com Badge', $widget_ops, $control_ops);
         }
 
