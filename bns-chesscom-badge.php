@@ -117,7 +117,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 
         function widget( $args, $instance ) {
                 extract( $args );
-                /* User-selected settings. */
+                /** User-selected settings */
                 $title = apply_filters( 'widget_title', $instance['title'] );
                 $the_user = $instance['the_user'];
                 $badge = $instance['badge'];
@@ -211,7 +211,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
                                     </div>
                                     <div style="margin: 4px; background-color: #fff; padding: 6px; border: 1px solid #9ac567;"> <a href="http://www.chess.com/members/view/Cais?ref_id=<?php echo $user_id; ?>" rel="nofollow"><img src="<?php echo $avatar_url; ?>" width="30" height="30" style="float: left; margin: 0 4px 4px 0; border: 1px solid #666;" /></a><a href="http://www.chess.com/members/view/<?php echo $username; ?>?ref_id=<?php echo $user_id; ?>" rel="nofollow"><strong><?php echo $username; ?></strong></a><br />Rating: <strong><?php echo $best_rating; ?></strong><br /><br />
                                         <div style="text-align:center; margin: 8px;">
-                                            <a href="http://www.chess.com/echess/create_game.html?uid=<?php echo $user_id; ?>&ref_id=<?php echo $user_id; ?>" style="border-top: 2px solid #f7b15b; border-left: 2px solid #f7b15b; border-right: 2px solid #db8213; border-bottom: 2px solid #db8213; background-color: #ff9c21; color: #ffc; padding: 1px 2px; text-decoration: none; font-weight: bold; font-size: 14px;" rel="nofollow">Challenge me!</a>
+                                            <a href="http://www.chess.com/echess/create_game.html?uid=<?php echo $user_id; ?>&ref_id=<?php echo $user_id; ?>" style="border: 2px solid #f7b15b; border-right-color: #db8213; border-bottom-color: #db8213; background-color: #ff9c21; color: #ffc; padding: 1px 2px; text-decoration: none; font-weight: bold; font-size: 14px;" rel="nofollow">Challenge me!</a>
                                         </div>
                                         <div style="text-align:center;">
                                             <a href="http://www.chess.com/home/game_archive.html?member=<?php echo $username; ?>&ref_id=<?php echo $user_id; ?>" rel="nofollow">View my games</a>
@@ -296,7 +296,8 @@ function bns_chess_shortcode( $atts ) {
         );
         /** Get the_widget output and put into its own container */
         $bns_chess_content = ob_get_contents();
-        ob_end_clean(); /* All your snipes belong to us! */
+        ob_end_clean();
+        // All your snipes belong to us!
     
         return $bns_chess_content;
 }

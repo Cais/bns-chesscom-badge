@@ -79,7 +79,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 
 == Changelog ==
 = 0.4 =
-* released ...
+* released November 2011
 * confirmed compatible with WordPress 3.3
 * added phpDoc Style documentation
 * added i18n support
