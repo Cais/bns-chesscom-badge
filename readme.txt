@@ -83,7 +83,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 * confirmed compatible with WordPress 3.3
 * added phpDoc Style documentation
 * added i18n support
-* added conditional enqueue of `bns-chesscom-badge-custom-style.css` stylesheet for end-user modifications
+* added conditional enqueue of `bns-chesscom-badge-custom-style.css` stylesheet
 
 = 0.3 =
 * released June 2011
