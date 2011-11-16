@@ -56,7 +56,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @internal    Version 2.8 being used in reference to `register_widget`
  *
  * Last revised November 16, 2011.
- * @todo        Check version compatibility after other updates are completed
+ * @todo    Check version compatibility after other updates are completed
  */
 global $wp_version;
 $exit_message = 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
@@ -77,11 +77,25 @@ if (version_compare($wp_version, "2.8", "<")) {
 load_plugin_textdomain( 'bns-cb' );
 // End: BNS Add Widget TextDomain
 
-// Add BNS Chess.com Badge Stylesheet
+/**
+ * Enqueue Plugin Scripts and Styles
+ *
+ * Adds plugin stylesheet and allows for custom stylesheet to be added by end-user.
+ *
+ * @package BNS_Add_Widget
+ * @since   0.3
+ * @version 0.4
+ *
+ * Last revised November 16, 2011
+ * @todo    Look at using the plugin version data for the version number in `wp_enqueue_style` rather than hard-coding a number
+ */
 function BNS_Chesscom_Scripts_and_Styles() {
-    /* Scripts */
-    /* Styles */
-  	wp_enqueue_style( 'BNS-Chesscom-Style', plugin_dir_url( __FILE__ ) . '/bns-chesscom-badge-style.css', array(), '0.3', 'screen' );
+        /* Scripts */
+        /* Styles */
+        wp_enqueue_style( 'BNS-Chesscom-Badge-Style', plugin_dir_url( __FILE__ ) . '/bns-chesscom-badge-style.css', array(), '0.4', 'screen' );
+        if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-chesscom-badge-custom-style.css' ) ) { // Only enqueue if available
+            wp_enqueue_style( 'BNS-Chesscom-Badge-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-chesscom-badge-custom-style.css', array(), '0.4', 'screen' );
+        }
 }
 add_action( 'wp_enqueue_scripts', 'BNS_Chesscom_Scripts_and_Styles' );
 
