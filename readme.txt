@@ -82,6 +82,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 * released ...
 * confirmed compatible with WordPress 3.3
 * added phpDoc Style documentation
+* added i18n support
 
 = 0.3 =
 * released June 2011

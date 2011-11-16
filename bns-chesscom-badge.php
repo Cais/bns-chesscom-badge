@@ -47,11 +47,35 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Last revised November 16, 2011
  */
 
+/**
+ * Check installed WordPress version for compatibility
+ *
+ * @package     BNS_Chesscom_Badge
+ * @since       0.1
+ * @version     0.4
+ * @internal    Version 2.8 being used in reference to `register_widget`
+ *
+ * Last revised November 16, 2011.
+ * @todo        Check version compatibility after other updates are completed
+ */
 global $wp_version;
 $exit_message = 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
-if (version_compare($wp_version, "2.8", "<")) { /* for `register_widget` */
-	exit ($exit_message);
+if (version_compare($wp_version, "2.8", "<")) {
+    exit ($exit_message);
 }
+
+/**
+ * BNS Chess.com Badge TextDomain
+ * Make plugin text available for translation (i18n)
+ *
+ * @package:    BNS_Chesscom_Badge
+ * @since:      0.4
+ *
+ * @internal    Note: Translation files are expected to be found in the plugin root folder / directory.
+ * @internal    `bns-cb` is being used in place of `bns-chesscom-badge`
+ */
+load_plugin_textdomain( 'bns-cb' );
+// End: BNS Add Widget TextDomain
 
 // Add BNS Chess.com Badge Stylesheet
 function BNS_Chesscom_Scripts_and_Styles() {
