@@ -57,6 +57,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * Last revised November 16, 2011.
  * @todo    Check version compatibility after other updates are completed
+ * @todo    Re-write to be i18n compatible
  */
 global $wp_version;
 $exit_message = 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
