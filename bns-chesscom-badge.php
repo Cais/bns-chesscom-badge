@@ -276,7 +276,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
  *
  * @param   $atts
  *
- * @return  string createrd with ob_get_contents
+ * @return  string created with ob_get_contents
  */
 function bns_chess_shortcode( $atts ) {
         /** Get ready to capture the elusive widget output */
@@ -304,4 +304,3 @@ function bns_chess_shortcode( $atts ) {
 }
 add_shortcode( 'bns_chess', 'bns_chess_shortcode' );
 // BNS Chess.com Badge Shortcode End - Say your prayers ...
-?>
