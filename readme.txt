@@ -78,6 +78,9 @@ No. The plugin will retrieve all the necessary details based on the user name en
 * Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 0.4.2 =
+* documentation updates
+
 = 0.4.1 =
 * confirmed compatible with WordPress 3.4
 * inline css optimizations
