@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-chesscom-badge/
  * @link        https://github.com/Cais/bns-chesscom-badge/
  * @link        http://wordpress.org/extend/plugins/bns-chesscom-badge/
- * @version     0.4.1
+ * @version     0.4.2
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2010-2012, Edward Caissie
  *
@@ -45,7 +45,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * Last revised November 16, 2011
+ * @date    August 2, 2012
+ * Documentation / 'readme.txt' updates
  */
 
 /**
@@ -59,12 +60,11 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @version     0.4
  * @internal    Version 2.8 being used in reference to `register_widget`
  *
- * Last revised November 16, 2011.
- * @todo    Check version compatibility after other updates are completed
- * @todo    Re-write to be i18n compatible
+ * @date        August 2, 2012
+ * i18n updates
  */
 global $wp_version;
-$exit_message = 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
+$exit_message = __( 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-cb' );
 if ( version_compare( $wp_version, "2.8", "<" ) ) {
     exit ( $exit_message );
 }
@@ -90,21 +90,26 @@ load_plugin_textdomain( 'bns-cb' );
  * @package BNS_Chesscom_Badge
  * @since   0.3
  *
+ * @uses    get_plugin_data
  * @uses    plugin_dir_url
  * @uses    plugin_dir_path
  * @uses    wp_enqueue_style
  *
- * @version 0.4
- *
- * Last revised November 16, 2011
- * @todo    Look at using the plugin version data for the version number in `wp_enqueue_style` rather than hard-coding a number
+ * @version 0.4.2
+ * @date    August 2, 2012
+ * Programmatically add version number to enqueue calls
  */
 function BNS_Chesscom_Scripts_and_Styles() {
+    /** Call the wp-admin plugin code */
+    require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+    /** @var $bnscb_data - holds the plugin header data */
+    $bnscb_data = get_plugin_data( __FILE__ );
+
     /* Scripts */
     /* Styles */
-    wp_enqueue_style( 'BNS-Chesscom-Badge-Style', plugin_dir_url( __FILE__ ) . '/bns-chesscom-badge-style.css', array(), '0.4', 'screen' );
+    wp_enqueue_style( 'BNS-Chesscom-Badge-Style', plugin_dir_url( __FILE__ ) . '/bns-chesscom-badge-style.css', array(), $bnscb_data['Version'] , 'screen' );
     if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-chesscom-badge-custom-style.css' ) ) { // Only enqueue if available
-        wp_enqueue_style( 'BNS-Chesscom-Badge-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-chesscom-badge-custom-style.css', array(), '0.4', 'screen' );
+        wp_enqueue_style( 'BNS-Chesscom-Badge-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-chesscom-badge-custom-style.css', array(), $bnscb_data['Version'], 'screen' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'BNS_Chesscom_Scripts_and_Styles' );
