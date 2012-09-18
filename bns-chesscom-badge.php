@@ -6,14 +6,13 @@ Description: Chess.com widget that dynamically displays the user's current ratin
 Version: 0.4.2
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
-Textdomain: bns-cb
+Text Domain: bns-cb
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
 /**
  * BNS Chess.com Badge
- *
  * Chess.com widget that dynamically displays the user's current rating with
  * direct links to Chess.com
  *
@@ -80,11 +79,10 @@ if ( version_compare( $wp_version, "2.8", "<" ) ) {
  * @internal    `bns-cb` is being used in place of `bns-chesscom-badge`
  */
 load_plugin_textdomain( 'bns-cb' );
-// End: BNS Chess.com Badge TextDomain
+/** End: BNS Chess.com Badge TextDomain */
 
 /**
  * Enqueue Plugin Scripts and Styles
- *
  * Adds plugin stylesheet and allows for custom stylesheet to be added by end-user.
  *
  * @package BNS_Chesscom_Badge
@@ -324,9 +322,7 @@ function bns_chess_shortcode( $atts ) {
         )
     );
     /** Get the_widget output and put into its own container */
-    $bns_chess_content = ob_get_contents();
-    ob_end_clean();
-    // All your snipes belong to us!
+    $bns_chess_content = ob_get_clean();
 
     return $bns_chess_content;
 }
