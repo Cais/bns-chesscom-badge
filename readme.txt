@@ -83,6 +83,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 = 0.6 =
 * Release February 2013
 * Refactor code into class structure
+* Added sanity check if user name is present
 
 = 0.5 =
 * Release November 2012

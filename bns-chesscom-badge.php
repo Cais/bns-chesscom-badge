@@ -52,8 +52,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @version 0.6
  * @date    February 12, 2013
  * Refactored code into the class structure
- *
- * @todo Improve error checking for the user name
+ * Added sanity check if user name is present
  */
 
 class BNS_Chesscom_Badge_Widget extends WP_Widget {
@@ -78,6 +77,9 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
         /** Add shortcode */
         add_shortcode( 'bns_chess', array( $this, 'bns_chess_shortcode' ) );
 
+        /** Add widget */
+        add_action( 'widgets_init', array( $this, 'load_bnscb_widget' ) );
+
     } /** End function - BNS Chesscom Badge Widget (constructor) */
 
 
@@ -94,6 +96,13 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
         $the_user   = $instance['the_user'];
         $badge      = $instance['badge'];
         $status     = $instance['status'];
+
+        /** @var $the_user - the user name trimmed of any white space */
+        $the_user = trim( $the_user );
+        /** Sanity check - was a user name entered */
+        if ( empty( $the_user ) ) {
+            return;
+        } /** End if - empty */
 
         /** @var    $before_widget  string - defined by theme */
         echo $before_widget;
@@ -349,18 +358,22 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
         return $bns_chess_content;
     } /** End function - bns chess shortcode */
 
+
+    /**
+     * Register widget
+     *
+     * @package BNS_Chesscom_Badge
+     * @since   0.1
+     *
+     * @uses    register_widget
+     */
+    function load_bnscb_widget() {
+        register_widget( 'BNS_Chesscom_Badge_Widget' );
+    } /** End function - load bnsbc widget */
+
+
 } /** End class - BNS_Chesscom_Badge_Widget */
 
 
-/**
- * Register widget
- *
- * @package BNS_Chesscom_Badge
- * @since   0.1
- *
- * @uses    register_widget
- */
-function load_bnscb_widget() {
-    register_widget( 'BNS_Chesscom_Badge_Widget' );
-} /** End function - load bnsbc widget */
-add_action( 'widgets_init', 'load_bnscb_widget' );
+/** @var $bnscb - instantiate the extended widget class */
+$bnscb = new BNS_Chesscom_Badge_Widget();
