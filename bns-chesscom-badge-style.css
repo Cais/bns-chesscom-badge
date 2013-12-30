@@ -34,10 +34,10 @@
  */
 
 .bns-chesscom-badge a img.center {
-    display: block;
-    margin: 0 auto;    
+	display: block;
+	margin: 0 auto;
 }
 
 .bns-chesscom-badge div.bnscb_status {
-    text-align: center;
+	text-align: center;
 }
