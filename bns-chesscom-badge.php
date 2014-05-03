@@ -3,7 +3,7 @@
 Plugin Name: BNS Chess.com Badge
 Plugin URI: http://buynowshop.com/plugins/bns-chesscom-badge
 Description: Chess.com widget that dynamically displays the user's current rating with direct links to Chess.com
-Version: 0.6.2
+Version: 0.6.3
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 Text Domain: bns-cb
@@ -20,9 +20,9 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-chesscom-badge/
  * @link        https://github.com/Cais/bns-chesscom-badge/
  * @link        http://wordpress.org/extend/plugins/bns-chesscom-badge/
- * @version     0.6.2
+ * @version     0.6.3
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2010-2013, Edward Caissie
+ * @copyright   Copyright (c) 2010-2014, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
@@ -57,13 +57,18 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @version     0.6.2
  * @date        September 2013
  */
-
 class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	function BNS_Chesscom_Badge_Widget() {
 		/** Widget settings */
-		$widget_ops = array( 'classname' => 'bns-chesscom-badge', 'description' => __( 'Displays a Chess.com member badge in a widget area; or, with a shortcode.', 'bns-cb' ) );
+		$widget_ops = array(
+			'classname'   => 'bns-chesscom-badge',
+			'description' => __( 'Displays a Chess.com member badge in a widget area; or, with a shortcode.', 'bns-cb' )
+		);
 		/** Widget control settings */
-		$control_ops = array( 'width' => 200, 'id_base' => 'bns-chesscom-badge' );
+		$control_ops = array(
+			'width'   => 200,
+			'id_base' => 'bns-chesscom-badge'
+		);
 		/** Create the widget */
 		$this->WP_Widget( 'bns-chesscom-badge', 'BNS Chess.com Badge', $widget_ops, $control_ops );
 
@@ -76,7 +81,12 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		/** End if - version compare */
 
 		/** Add scripts and styles */
-		add_action( 'wp_enqueue_scripts', array( $this, 'BNS_Chesscom_Scripts_and_Styles' ) );
+		add_action(
+			'wp_enqueue_scripts', array(
+				$this,
+				'BNS_Chesscom_Scripts_and_Styles'
+			)
+		);
 
 		/** Add shortcode */
 		add_shortcode( 'bns_chess', array( $this, 'bns_chess_shortcode' ) );
@@ -376,12 +386,14 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		ob_start();
 		the_widget(
 			'BNS_Chesscom_Badge_Widget',
-			$instance = shortcode_atts( array(
-				'title'    => __( '', 'bns-cb' ),
-				'the_user' => '',
-				'badge'    => 'default',
-				'status'   => false,
-			), $atts, 'bns_chess' ),
+			$instance = shortcode_atts(
+				array(
+					'title'    => __( '', 'bns-cb' ),
+					'the_user' => '',
+					'badge'    => 'default',
+					'status'   => false,
+				), $atts, 'bns_chess'
+			),
 			$args = array(
 				/** clear variables defined by theme for widgets */
 				$before_widget = '',
