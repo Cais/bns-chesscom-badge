@@ -84,6 +84,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 * Released ...
 * Minor code reformatting
 * Clean up extraneous code comments
+* Replace `bns-cb` textdomain with `bns-chesscom-badge`
 * Updates to copyright year, tested up to, requires at least, etc.
 
 = 0.6.3 =

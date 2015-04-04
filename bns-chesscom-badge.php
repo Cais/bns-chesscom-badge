@@ -6,7 +6,7 @@ Description: Chess.com widget that dynamically displays the user's current ratin
 Version: 0.7
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
-Text Domain: bns-cb
+Text Domain: bns-chesscom-badge
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -52,7 +52,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		/** Widget settings */
 		$widget_ops = array(
 			'classname'   => 'bns-chesscom-badge',
-			'description' => __( 'Displays a Chess.com member badge in a widget area; or, with a shortcode.', 'bns-cb' )
+			'description' => __( 'Displays a Chess.com member badge in a widget area; or, with a shortcode.', 'bns-chesscom-badge' )
 		);
 		/** Widget control settings */
 		$control_ops = array(
@@ -64,7 +64,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 
 		/** Check installed WordPress version for compatibility */
 		global $wp_version;
-		$exit_message = __( 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-cb' );
+		$exit_message = __( 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-chesscom-badge' );
 		if ( version_compare( $wp_version, "2.8", "<" ) ) {
 			exit ( $exit_message );
 		}
@@ -225,9 +225,9 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 
 		/** Conditional check to displaying online statuses or not */
 		if ( ( 'online' == $online_status_image_url ) && ( true == $instance['status'] ) ) {
-			echo apply_filters( 'bnscb_online_text', sprintf( '<div class="bnscb_online bnscb_status">%1$s</div>', __( 'I am online and ready to play!', 'bns-cb' ) ) );
+			echo apply_filters( 'bnscb_online_text', sprintf( '<div class="bnscb_online bnscb_status">%1$s</div>', __( 'I am online and ready to play!', 'bns-chesscom-badge' ) ) );
 		} elseif ( ( 'offline' == $online_status_image_url ) && ( true == $instance['status'] ) ) {
-			echo apply_filters( 'bnscb_online_text', sprintf( '<div class="bnscb_offline bnscb_status">%1$s</div>', __( 'I am offline but accepting challenges!', 'bns-cb' ) ) );
+			echo apply_filters( 'bnscb_online_text', sprintf( '<div class="bnscb_offline bnscb_status">%1$s</div>', __( 'I am offline but accepting challenges!', 'bns-chesscom-badge' ) ) );
 		}
 
 		/** @var    $after_widget   string - defined by theme */
@@ -266,7 +266,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	function form( $instance ) {
 		/** Set default widget settings */
 		$defaults = array(
-			'title'    => __( 'Chess.com', 'bns-cb' ),
+			'title'    => __( 'Chess.com', 'bns-chesscom-badge' ),
 			'the_user' => 'CHESScom',
 			'badge'    => 'default',
 			'status'   => false,
@@ -275,17 +275,17 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-cb' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-chesscom-badge' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'the_user' ); ?>"><?php _e( 'Enter your Chess.com user name:', 'bns-cb' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'the_user' ); ?>"><?php _e( 'Enter your Chess.com user name:', 'bns-chesscom-badge' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'the_user' ); ?>" name="<?php echo $this->get_field_name( 'the_user' ); ?>" value="<?php echo $instance['the_user']; ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'badge' ); ?>"><?php _e( 'Choose Badge Size:', 'bns-cb' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'badge' ); ?>"><?php _e( 'Choose Badge Size:', 'bns-chesscom-badge' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'badge' ); ?>" name="<?php echo $this->get_field_name( 'badge' ); ?>" class="widefat">
 				<option <?php selected( 'Default', $instance['badge'], true ); ?>>Default</option>
 				<option <?php selected( '125x125', $instance['badge'], true ); ?>>125x125</option>
@@ -300,7 +300,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 
 		<p><!-- This (checkbox) is used to turn on or off if the message is displayed -->
 			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['status'], true ); ?> id="<?php echo $this->get_field_id( 'status' ); ?>" name="<?php echo $this->get_field_name( 'status' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'status' ); ?>"><?php _e( 'Show your online status?', 'bns-cb' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'status' ); ?>"><?php _e( 'Show your online status?', 'bns-chesscom-badge' ); ?></label>
 		</p>
 
 	<?php
@@ -364,7 +364,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 			'BNS_Chesscom_Badge_Widget',
 			$instance = shortcode_atts(
 				array(
-					'title'    => __( '', 'bns-cb' ),
+					'title'    => __( '', 'bns-chesscom-badge' ),
 					'the_user' => '',
 					'badge'    => 'default',
 					'status'   => false,
