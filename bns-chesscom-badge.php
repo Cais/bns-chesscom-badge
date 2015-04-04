@@ -48,7 +48,27 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @date        April 2015
  */
 class BNS_Chesscom_Badge_Widget extends WP_Widget {
-	function BNS_Chesscom_Badge_Widget() {
+
+	/**
+	 * Constructor
+	 *
+	 * @package BNS_Chesscom_Badge
+	 * @since   0.1
+	 *
+	 * @uses    (CLASS) WP_Widget
+	 * @uses    __
+	 * @uses    add_action
+	 * @uses    add_shortcode
+	 */
+	function __construct() {
+
+		/** Check installed WordPress version for compatibility */
+		global $wp_version;
+		$exit_message = __( 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-chesscom-badge' );
+		if ( version_compare( $wp_version, "3.6", "<" ) ) {
+			exit ( $exit_message );
+		}
+
 		/** Widget settings */
 		$widget_ops = array(
 			'classname'   => 'bns-chesscom-badge',
@@ -61,13 +81,6 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		);
 		/** Create the widget */
 		$this->WP_Widget( 'bns-chesscom-badge', 'BNS Chess.com Badge', $widget_ops, $control_ops );
-
-		/** Check installed WordPress version for compatibility */
-		global $wp_version;
-		$exit_message = __( 'BNS Chess.com Badge requires WordPress version 2.8 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-chesscom-badge' );
-		if ( version_compare( $wp_version, "2.8", "<" ) ) {
-			exit ( $exit_message );
-		}
 
 		/** Add scripts and styles */
 		add_action(
@@ -91,8 +104,14 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	/**
 	 * Widget
 	 *
+	 * @package BNS_Chesscom_Badge
+	 * @since   0.1
+	 *
 	 * @param   array $args
 	 * @param   array $instance
+	 *
+	 * @uses    __
+	 * @uses    apply_filters
 	 */
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -239,6 +258,9 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	/**
 	 * Update
 	 *
+	 * @package BNS_Chesscom_Badge
+	 * @since   0.1
+	 *
 	 * @param   array $new_instance
 	 * @param   array $old_instance
 	 *
@@ -259,7 +281,16 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	/**
 	 * Form
 	 *
+	 * @package BNS_Chesscom_Badge
+	 * @since   0.1
+	 *
 	 * @param   array $instance
+	 *
+	 * @uses    __
+	 * @uses    _e
+	 * @uses    get_field_id
+	 * @uses    get_field_name
+	 * @uses    selected
 	 *
 	 * @return  string|void
 	 */
@@ -348,6 +379,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	 *
 	 * @param   $atts
 	 *
+	 * @uses    __
 	 * @uses    the_widget
 	 * @uses    shortcode_atts
 	 *

@@ -2,7 +2,7 @@
 Contributors: cais
 Donate link: http://buynowshop.com
 Tags: Chess.com, dynamic ratings, shortcode, widget-only
-Requires at least: 2.8
+Requires at least: 3.6
 Tested up to: 4.2
 Stable tag: 0.7
 License: GNU General Public License v2
@@ -83,7 +83,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 = 0.7 =
 * Released ...
 * Minor code reformatting
-* Clean up extraneous code comments
+* Clean up code and improve inline documentation
 * Replace `bns-cb` textdomain with `bns-chesscom-badge`
 * Updates to copyright year, tested up to, requires at least, etc.
 
