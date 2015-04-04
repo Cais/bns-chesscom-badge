@@ -3,7 +3,7 @@
 Plugin Name: BNS Chess.com Badge
 Plugin URI: http://buynowshop.com/plugins/bns-chesscom-badge
 Description: Chess.com widget that dynamically displays the user's current rating with direct links to Chess.com
-Version: 0.6.3
+Version: 0.7
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 Text Domain: bns-cb
@@ -19,10 +19,10 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @package     BNS_Chesscom_Badge
  * @link        http://buynowshop.com/plugins/bns-chesscom-badge/
  * @link        https://github.com/Cais/bns-chesscom-badge/
- * @link        http://wordpress.org/extend/plugins/bns-chesscom-badge/
- * @version     0.6.3
+ * @link        https://wordpress.org/plugins/bns-chesscom-badge/
+ * @version     0.7
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2010-2014, Edward Caissie
+ * @copyright   Copyright (c) 2010-2015, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
@@ -44,18 +44,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @version     0.5
- * @date        November 26, 2012
- * Add conditional check to displaying online statuses or not
- * Removed load_plugin_textdomain as redundant
- *
- * @version     0.6
- * @date        February 12, 2013
- * Refactored code into the class structure
- * Added sanity check if user name is present
- *
- * @version     0.6.2
- * @date        September 2013
+ * @version     0.7
+ * @date        April 2015
  */
 class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	function BNS_Chesscom_Badge_Widget() {
@@ -78,7 +68,6 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		if ( version_compare( $wp_version, "2.8", "<" ) ) {
 			exit ( $exit_message );
 		}
-		/** End if - version compare */
 
 		/** Add scripts and styles */
 		add_action(
@@ -119,7 +108,6 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		if ( empty( $the_user ) ) {
 			return;
 		}
-		/** End if - empty */
 
 		/** @var    $before_widget  string - defined by theme */
 		echo $before_widget;
@@ -131,7 +119,6 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 			 */
 			echo $before_title . $title . $after_title;
 		}
-		/** End if - title */
 
 		/** @var $the_source - base URL of API to access user details */
 		$the_source = 'http://www.chess.com/api/get_user_info?username=';
@@ -207,34 +194,33 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 			case "Default":
 			default:
 				?>
-					<div style="border: 1px solid #000; width: 170px; overflow: hidden; font-family: Verdana, Arial, sans-serif; margin: 4px auto;">
-						<div style="border: 2px solid #9ac567; border-right-color: #224d00; border-bottom-color: #224d00; background-color: #4a7521; font-size: 12px;">
-							<div style="margin: 4px; background-color: #fff; padding: 4px; text-align: center; border: 1px solid #9ac567;">
-								<a href="http://www.chess.com?ref_id=<?php echo $user_id; ?>" rel="nofollow" style="font-size: 9px;">
-									<img src="http://cssjs.chesscomfiles.com/images/chesscom_logo.gif" alt="" border="0" />
-								</a>
-								<a href="http://www.chess.com?ref_id=<?php echo $user_id; ?>" rel="nofollow" style="font-size: 9px;"></a>
-							</div>
-							<div style="text-align: center; margin: 2px; color: #ffe; font-size: 9px;">
-								<strong>I
-									<a href="http://www.chess.com" style="color: #ffc; text-decoration: none; font-size: 9px;">play chess</a> at Chess.com!</strong>
-							</div>
-							<div style="margin: 4px; background-color: #fff; padding: 6px; border: 1px solid #9ac567;">
-								<a href="http://www.chess.com/members/view/Cais?ref_id=<?php echo $user_id; ?>" rel="nofollow"><img src="<?php echo $avatar_url; ?>" width="30" height="30" alt="" style="float: left; margin: 0 4px 4px 0; border: 1px solid #666;" /></a><a href="http://www.chess.com/members/view/<?php echo $username; ?>?ref_id=<?php echo $user_id; ?>" rel="nofollow"><strong><?php echo $username; ?></strong></a><br />Rating:
-								<strong><?php echo $best_rating; ?></strong><br /><br />
+				<div style="border: 1px solid #000; width: 170px; overflow: hidden; font-family: Verdana, Arial, sans-serif; margin: 4px auto;">
+					<div style="border: 2px solid #9ac567; border-right-color: #224d00; border-bottom-color: #224d00; background-color: #4a7521; font-size: 12px;">
+						<div style="margin: 4px; background-color: #fff; padding: 4px; text-align: center; border: 1px solid #9ac567;">
+							<a href="http://www.chess.com?ref_id=<?php echo $user_id; ?>" rel="nofollow" style="font-size: 9px;">
+								<img src="http://cssjs.chesscomfiles.com/images/chesscom_logo.gif" alt="" border="0" />
+							</a>
+							<a href="http://www.chess.com?ref_id=<?php echo $user_id; ?>" rel="nofollow" style="font-size: 9px;"></a>
+						</div>
+						<div style="text-align: center; margin: 2px; color: #ffe; font-size: 9px;">
+							<strong>I
+								<a href="http://www.chess.com" style="color: #ffc; text-decoration: none; font-size: 9px;">play chess</a> at Chess.com!</strong>
+						</div>
+						<div style="margin: 4px; background-color: #fff; padding: 6px; border: 1px solid #9ac567;">
+							<a href="http://www.chess.com/members/view/Cais?ref_id=<?php echo $user_id; ?>" rel="nofollow"><img src="<?php echo $avatar_url; ?>" width="30" height="30" alt="" style="float: left; margin: 0 4px 4px 0; border: 1px solid #666;" /></a><a href="http://www.chess.com/members/view/<?php echo $username; ?>?ref_id=<?php echo $user_id; ?>" rel="nofollow"><strong><?php echo $username; ?></strong></a><br />Rating:
+							<strong><?php echo $best_rating; ?></strong><br /><br />
 
-								<div style="text-align:center; margin: 8px;">
-									<a href="http://www.chess.com/echess/create_game.html?uid=<?php echo $user_id; ?>&ref_id=<?php echo $user_id; ?>" style="border: 2px solid #f7b15b; border-right-color: #db8213; border-bottom-color: #db8213; background-color: #ff9c21; color: #ffc; padding: 1px 2px; text-decoration: none; font-weight: bold; font-size: 14px;" rel="nofollow">Challenge me!</a>
-								</div>
-								<div style="text-align:center;">
-									<a href="http://www.chess.com/home/game_archive.html?member=<?php echo $username; ?>&ref_id=<?php echo $user_id; ?>" rel="nofollow">View my games</a>
-								</div>
+							<div style="text-align:center; margin: 8px;">
+								<a href="http://www.chess.com/echess/create_game.html?uid=<?php echo $user_id; ?>&ref_id=<?php echo $user_id; ?>" style="border: 2px solid #f7b15b; border-right-color: #db8213; border-bottom-color: #db8213; background-color: #ff9c21; color: #ffc; padding: 1px 2px; text-decoration: none; font-weight: bold; font-size: 14px;" rel="nofollow">Challenge me!</a>
+							</div>
+							<div style="text-align:center;">
+								<a href="http://www.chess.com/home/game_archive.html?member=<?php echo $username; ?>&ref_id=<?php echo $user_id; ?>" rel="nofollow">View my games</a>
 							</div>
 						</div>
 					</div>
-				<?php
+				</div>
+			<?php
 		}
-		/** End switch */
 		/** End badge choices */
 
 		/** Conditional check to displaying online statuses or not */
@@ -243,14 +229,11 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		} elseif ( ( 'offline' == $online_status_image_url ) && ( true == $instance['status'] ) ) {
 			echo apply_filters( 'bnscb_online_text', sprintf( '<div class="bnscb_offline bnscb_status">%1$s</div>', __( 'I am offline but accepting challenges!', 'bns-cb' ) ) );
 		}
-		/** End if - status */
 
 		/** @var    $after_widget   string - defined by theme */
 		echo $after_widget;
 
 	}
-
-	/** End function - widget */
 
 
 	/**
@@ -271,8 +254,6 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 
 		return $instance;
 	}
-
-	/** End function - update */
 
 
 	/**
@@ -325,8 +306,6 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	<?php
 	}
 
-	/** End function - form */
-
 
 	/**
 	 * Enqueue Plugin Scripts and Styles
@@ -356,11 +335,8 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-chesscom-badge-custom-style.css' ) ) { // Only enqueue if available
 			wp_enqueue_style( 'BNS-Chesscom-Badge-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-chesscom-badge-custom-style.css', array(), $bnscb_data['Version'], 'screen' );
 		}
-		/** End if - is readable */
 
 	}
-
-	/** End function - BNS Chesscom Scripts and Styles */
 
 
 	/**
@@ -406,9 +382,8 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		$bns_chess_content = ob_get_clean();
 
 		return $bns_chess_content;
-	}
 
-	/** End function - bns chess shortcode */
+	}
 
 
 	/**
@@ -422,12 +397,9 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 	function load_bnscb_widget() {
 		register_widget( 'BNS_Chesscom_Badge_Widget' );
 	}
-	/** End function - load bnsbc widget */
 
 
 }
-
-/** End class - BNS_Chesscom_Badge_Widget */
 
 
 /** @var $bnscb - instantiate the extended widget class */
