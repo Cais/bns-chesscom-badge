@@ -3,7 +3,7 @@
 Plugin Name: BNS Chess.com Badge
 Plugin URI: http://buynowshop.com/plugins/bns-chesscom-badge
 Description: Chess.com widget that dynamically displays the user's current rating with direct links to Chess.com
-Version: 0.7
+Version: 0.8
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 Text Domain: bns-chesscom-badge
@@ -45,7 +45,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @version     0.8
- * @date        June 2015
+ * @date        August 2015
  */
 class BNS_Chesscom_Badge_Widget extends WP_Widget {
 
@@ -241,7 +241,7 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 						</div>
 					</div>
 				</div>
-			<?php
+				<?php
 		}
 
 		/** Conditional check to displaying online statuses or not */
