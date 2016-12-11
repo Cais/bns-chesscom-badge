@@ -145,6 +145,8 @@ class BNS_Chesscom_Badge_Widget extends WP_Widget {
 		/** Holds data to be parsed for use by the plugin. */
 		$chess_user = wp_remote_get( $user_source );
 
+		$chess_user = null;
+
 		/**
 		 * Contents of $chess_user: Success+|<user_id>|<chess_title>|<username>|<online_status_image_url>|<country>|<country_image_url>|<last_login_date>|<best_rating>|<best_rating_type>|<games_in_progress_count>|<timeout_percent>|<is_friends>|<has_avatar>
 		 */
