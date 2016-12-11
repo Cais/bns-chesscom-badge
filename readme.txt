@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com
 Tags: Chess.com, dynamic ratings, shortcode, widget-only
 Requires at least: 3.6
-Tested up to: 4.4
-Stable tag: 0.8
+Tested up to: 4.7
+Stable tag: 0.9
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -56,7 +56,7 @@ No. The plugin will retrieve all the necessary details based on the user name en
 1. The option panel.
 
 == Other Notes ==
-* Copyright 2010-2015  Edward Caissie  (email : edward.caissie@gmail.com)
+* Copyright 2010-2016  Edward Caissie  (email : edward.caissie@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2,
@@ -80,6 +80,12 @@ No. The plugin will retrieve all the necessary details based on the user name en
 * Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 0.9 =
+* Released December 2016
+* Update to use `wp_remote_get` instead of `file_get_contents`
+* Correct for HTTPS protocol being used by Chess.com
+* Better adherence to WPCS
+
 = 0.8 =
 * Released August 2015
 * Updated to PHP5 object constructors
